@@ -1,0 +1,16 @@
+<h4>Settings</h4>
+<div class="row">
+  <div class="col-xs-12 text-info"> 
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Time
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li ng-repeat="time in [15,16,17,18,19,20,21,22,23,24,25]">
+          <a ng-click="changeTime(time);" href="#">{{time}} minutes</a>
+        </li>
+      </ul>
+      <button class="btn btn-primary" type="button" ng-click="reset()">START</button>    
+    </div>
+  </div>
+</div>    
+      

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+   
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" data-semver="2.2.4"></script>   
+   
+   <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+   
+    <style>
+      body {
+        padding-top: 60px;
+      }
+      @media (max-width: 979px) {
+
+        /* Remove any padding from the body */
+        body {
+          padding-top: 0;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js"></script>
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.9/angular.js" data-semver="1.4.9"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
+    <script src="app.js"></script>    
+    <script src="fact.js"></script>       
+    <script src="factService.js"></script>     
+    <script src="mainController.js"></script>
+</head>
+
+  <body ng-controller="mainController" ng-cloak>
+    <!-- Page Content -->
+    <div class="container">
+      <h1 class="page-header">
+        <small class="text-muted">Math Facts</small>
+      </h1>      
+      <div class="row">
+  
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-3">
+          <div class="well">
+            <ng-include src="'menu.html'"></ng-include>
+          </div>          
+          <!-- HUDS -->
+          <div class="well">
+            <ng-include src="'quiz-hud.html'"></ng-include>
+          </div>
+        </div>
+        
+        <div class="col-md-9">
+  
+          <!-- Main App -->
+          <br>
+          <div ng-show="!timedOut">
+            <div ng-show="!isTestDone()">
+              <h2 class="text-info">
+                  {{currentFact.question}} <span ng-show="!answered || !correct"> = ?</span>
+                  <span ng-show="correct">= {{userAnswer}}  </span>
+                  <span class="text-success" ng-show="correct" style="font-weight: bold">GOOD!</span>
+              </h2>
+              <h3 ng-show="answered && !correct && !isTestDone()" class="text-danger">
+                Incorrect.
+                <span>{{currentFact.question}} = {{currentFact.answer}}</span>
+              </h3>                
+            </div>
+        
+            <br><br>
+            <div class="form-group" ng-show="!isTestDone()">
+              <div class="row form-group">
+                <div class="col-md-9">
+                  <input ng-model="userAnswer" type="text" class="form-control" style="width:300px;display:inline">
+                  <button class="btn btn-primary" ng-click="check()" ng-disabled="!userAnswer || answered">check</button>
+                  <button class="btn btn-success" ng-disabled="currentQuestion && !answered" ng-click="getNext()">Next</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group" ng-show="isTestDone()">
+                The test is complete.  Your score is {{score}}%.
+              <p>
+                You completed the test within the alloted time of {{allotedTime}} minutes.
+              </p>
+            </div>
+            
+          </div>
+          
+        </div>      
+        
+      </div>
+      <!-- /.row -->
+      <hr>
+      <!-- Footer -->
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+  
+          </div>
+          <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+      </footer>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,25 @@
+<h4>Test Status</h4>
+<div class="row">
+  <div class="col-xs-4 text-info">Correct:</div>
+  <div class="col-xs-2 text-success"> {{correctCount || 0}} </div>
+</div>
+<div class="row">
+  <div class="col-xs-4 text-info">Incorrect:</div>
+  <div class="col-xs-2 text-danger"> {{incorrectCount || 0}} </div>
+</div>
+<div class="row">
+  <div class="col-xs-4 text-info" text-info>Answered:</div>
+  <div class="col-xs-2 text-info"> {{correctCount + incorrectCount}} </div>
+</div>
+<div class="row">
+  <div class="col-xs-4  text-info">Remaining:</div>
+  <div class="col-xs-2 text-info"> {{remainingCount}} </div>
+</div>
+<div class="row">
+  <div class="col-xs-4  text-info">Score:</div>
+  <div class="col-xs-2 text-info"> {{score}}% </div>
+</div>
+<div class="row">
+  <div class="col-xs-4  text-info">Time:</div>
+  <div class="col-xs-2 text-info"> {{minutes}}:{{seconds}}</div>
+</div>
